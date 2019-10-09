@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{1836D409-47CA-442C-90D4-27CBDFD7234F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{CB11099D-E9FF-4522-A39A-6EADA849EF96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{9B6BE0A7-F297-40E1-83B0-52E7D5B47A56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Equifax.CSV.Importer.Web", "Equifax.CSV.Importer.Web\Equifax.CSV.Importer.Web.csproj", "{68A3AF24-FA02-418F-BB77-888D21CA1749}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equifax.CSV.Importer.Models", "Equifax.CSV.Importer.Models\Equifax.CSV.Importer.Models.csproj", "{119C8FDD-4139-4686-A673-A3FD777A752B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68A3AF24-FA02-418F-BB77-888D21CA1749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A3AF24-FA02-418F-BB77-888D21CA1749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A3AF24-FA02-418F-BB77-888D21CA1749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A3AF24-FA02-418F-BB77-888D21CA1749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{119C8FDD-4139-4686-A673-A3FD777A752B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{119C8FDD-4139-4686-A673-A3FD777A752B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{119C8FDD-4139-4686-A673-A3FD777A752B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{119C8FDD-4139-4686-A673-A3FD777A752B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68A3AF24-FA02-418F-BB77-888D21CA1749} = {1836D409-47CA-442C-90D4-27CBDFD7234F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FAE31F9D-9462-4184-9879-55DC1FC2F85F}
+	EndGlobalSection
+EndGlobal
