@@ -13,6 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Equifax.CSV.Importer.Web", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equifax.CSV.Importer.Models", "Equifax.CSV.Importer.Models\Equifax.CSV.Importer.Models.csproj", "{119C8FDD-4139-4686-A673-A3FD777A752B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equifax.CSV.Importer.Logic.Concrete", "Equifax.CSV.Importer.Logic.Concrete\Equifax.CSV.Importer.Logic.Concrete.csproj", "{DA8FB492-FD20-4B86-9B54-75C35C3DC6FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equifax.CSV.Importer.Logic.Abstract", "Equifax.CSV.Importer.Logic.Abstract\Equifax.CSV.Importer.Logic.Abstract.csproj", "{EB042984-06A1-435D-892D-11D5B5E1A299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equifax.CSV.Importer.Modules", "Equifax.CSV.Importer.Modules\Equifax.CSV.Importer.Modules.csproj", "{B2CDCBEC-8BB0-4FFE-92B3-A472BF81360B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,12 +33,26 @@ Global
 		{119C8FDD-4139-4686-A673-A3FD777A752B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{119C8FDD-4139-4686-A673-A3FD777A752B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{119C8FDD-4139-4686-A673-A3FD777A752B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8FB492-FD20-4B86-9B54-75C35C3DC6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8FB492-FD20-4B86-9B54-75C35C3DC6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8FB492-FD20-4B86-9B54-75C35C3DC6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8FB492-FD20-4B86-9B54-75C35C3DC6FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB042984-06A1-435D-892D-11D5B5E1A299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB042984-06A1-435D-892D-11D5B5E1A299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB042984-06A1-435D-892D-11D5B5E1A299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB042984-06A1-435D-892D-11D5B5E1A299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2CDCBEC-8BB0-4FFE-92B3-A472BF81360B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2CDCBEC-8BB0-4FFE-92B3-A472BF81360B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2CDCBEC-8BB0-4FFE-92B3-A472BF81360B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2CDCBEC-8BB0-4FFE-92B3-A472BF81360B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{68A3AF24-FA02-418F-BB77-888D21CA1749} = {1836D409-47CA-442C-90D4-27CBDFD7234F}
+		{DA8FB492-FD20-4B86-9B54-75C35C3DC6FC} = {CB11099D-E9FF-4522-A39A-6EADA849EF96}
+		{EB042984-06A1-435D-892D-11D5B5E1A299} = {CB11099D-E9FF-4522-A39A-6EADA849EF96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAE31F9D-9462-4184-9879-55DC1FC2F85F}

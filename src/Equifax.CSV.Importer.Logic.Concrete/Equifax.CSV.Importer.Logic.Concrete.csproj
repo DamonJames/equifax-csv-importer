@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="12.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Equifax.CSV.Importer.Logic.Abstract\Equifax.CSV.Importer.Logic.Abstract.csproj" />
+    <ProjectReference Include="..\Equifax.CSV.Importer.Models\Equifax.CSV.Importer.Models.csproj" />
+  </ItemGroup>
+
+</Project>
