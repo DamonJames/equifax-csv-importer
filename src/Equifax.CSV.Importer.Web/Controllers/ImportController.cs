@@ -42,9 +42,15 @@ namespace Equifax.CSV.Importer.Web.Controllers
                 return View("Index");
             }
 
+            var insert = _csvService.PersistMembers(conversion);
 
+            if (!insert.Success)
+            {
+                ModelState.AddModelError("File", "There was a problem persisting the members to the database");
+                return View("Index");
+            }
 
-            return View();
+            return View("Index");
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Equifax.CSV.Importer.Models
 {
-    public class CSVReadSuccessModel
+    public class CSVSuccessModel
     {
         public bool Success { get; set; }
         public string Message { get; set; }

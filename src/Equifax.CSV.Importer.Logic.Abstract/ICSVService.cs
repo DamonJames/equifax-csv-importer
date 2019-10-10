@@ -5,6 +5,7 @@ namespace Equifax.CSV.Importer.Logic.Abstract
 {
     public interface ICSVService
     {
-        CSVReadSuccessModel ReadFile(Stream file);
+        CSVSuccessModel ReadFile(Stream file);
+        CSVSuccessModel PersistMembers(CSVSuccessModel model);
     }
 }

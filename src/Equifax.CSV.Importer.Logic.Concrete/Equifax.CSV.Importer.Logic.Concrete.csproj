@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Equifax.CSV.Importer.Data.Abstract\Equifax.CSV.Importer.Data.Abstract.csproj" />
     <ProjectReference Include="..\Equifax.CSV.Importer.Logic.Abstract\Equifax.CSV.Importer.Logic.Abstract.csproj" />
     <ProjectReference Include="..\Equifax.CSV.Importer.Models\Equifax.CSV.Importer.Models.csproj" />
   </ItemGroup>
