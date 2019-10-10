@@ -16,4 +16,9 @@
     <ProjectReference Include="..\Equifax.CSV.Importer.Modules\Equifax.CSV.Importer.Modules.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\csv\" />
+  </ItemGroup>
+
 </Project>

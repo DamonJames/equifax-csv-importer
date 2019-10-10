@@ -1,4 +1,5 @@
-﻿using Equifax.CSV.Importer.Modules;
+﻿using Equifax.CSV.Importer.Models;
+using Equifax.CSV.Importer.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,7 @@ namespace Equifax.CSV.Importer.Web
         {
             services.AddMvc();
             services.ConfigureIoC();
+            services.AddSingleton(Configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

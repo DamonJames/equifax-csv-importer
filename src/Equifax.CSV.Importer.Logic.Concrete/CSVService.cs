@@ -1,18 +1,31 @@
 ﻿using Equifax.CSV.Importer.Logic.Abstract;
 using Equifax.CSV.Importer.Models;
-using System.Threading.Tasks;
 using CsvHelper;
 using System.IO;
+using System;
 
 namespace Equifax.CSV.Importer.Logic.Concrete
 {
     public class CSVService : ICSVService
     {
-        public async Task ReadFile(string file)
+        public CSVReadSuccessModel ReadFile(Stream file)
         {
-            TextReader reader = new StreamReader("");
+            var model = new CSVReadSuccessModel { Success = false };
+
+            TextReader reader = new StreamReader(file);
             var csvReader = new CsvReader(reader);
-            var records = csvReader.GetRecords<Member>();
+
+            try
+            {
+                model.Members = csvReader.GetRecords<Member>();
+                model.Success = true;
+                return model;
+            }
+            catch (Exception ex)
+            {
+                model.Message = "Unable to read from the CSV file provided";
+                return model;
+            }
         }
     }
 }
