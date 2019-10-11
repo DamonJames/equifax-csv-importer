@@ -11,6 +11,7 @@ namespace Equifax.CSV.Importer.Modules
         public static void ConfigureIoC(this IServiceCollection services)
         {
             services.AddTransient<ICSVService, CSVService>();
+            services.AddTransient<IMemberService, MemberService>();
             services.AddTransient<IMemberRepository, MemberRepository>();
             services.AddTransient<IConnectionFactory, SqlConnectionFactory>();
         }

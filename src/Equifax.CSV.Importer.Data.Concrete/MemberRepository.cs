@@ -1,9 +1,12 @@
 ﻿using Member = Equifax.CSV.Importer.Models.Member;
 using Equifax.CSV.Importer.Data.Abstract;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Linq;
-using FastMember;
+using System.Data;
+using System;
+using Dapper;
 
 namespace Equifax.CSV.Importer.Data.Concrete
 {
@@ -16,34 +19,53 @@ namespace Equifax.CSV.Importer.Data.Concrete
             _connectionFactory = connectionFactory;
         }
 
-        public void AddMany(IEnumerable<Member> data)
+        public async Task<IEnumerable<Member>> GetAsync()
         {
+            const string sql = @"SELECT * FROM [experian].[dbo].[Members]";
+
             using (var connection = _connectionFactory.CreateLocalConnection())
             {
-                var bulkCopy = new SqlBulkCopy(connection as SqlConnection,
-                    SqlBulkCopyOptions.TableLock |
-                    SqlBulkCopyOptions.FireTriggers |
-                    SqlBulkCopyOptions.UseInternalTransaction, null);
+                return await connection.QueryAsync<Member>(sql);
+            }
+        }
 
-                bulkCopy.DestinationTableName = "[dbo].[Members]";
-                bulkCopy.BatchSize = data?.Count() ?? 0;
-
-                connection.Open();
-
-                bulkCopy.ColumnMappings.Add("col1", "Id");
-                bulkCopy.ColumnMappings.Add("col2", "Name");
-                bulkCopy.ColumnMappings.Add("col3", "DateOfBirth");
-                bulkCopy.ColumnMappings.Add("col4", "Height");
-                bulkCopy.ColumnMappings.Add("col5", "Balance");
-
-                var records = data.Select(mem => new { col1 = mem.Id, col2 = mem.Name, col3 = mem.DateOfBirth, col4 = mem.Height, col5 = mem.Balance });
-
-                using (var reader = ObjectReader.Create(records, "col1", "col2", "col3", "col4", "col5"))
+        public void AddMany(IEnumerable<Member> data)
+        {
+            using (var connection = _connectionFactory.CreateLocalConnection() as SqlConnection)
+            {
+                try
                 {
-                    bulkCopy.WriteToServer(reader);
-                };
+                    connection.Open();
 
-                connection.Close();
+                    var dt = new DataTable();
+
+                    dt.Columns.Add("Id", typeof(Guid));
+                    dt.Columns.Add("Name");
+                    dt.Columns.Add("DateOfBirth");
+                    dt.Columns.Add("Height");
+                    dt.Columns.Add("Balance");
+
+                    foreach (var mem in data)
+                    {
+                        dt.Rows.Add(mem.Id, mem.Name, mem.DateOfBirth, mem.Height, mem.Balance);
+                    };
+
+                    using (var bulkCopy = new SqlBulkCopy(connection,
+                    SqlBulkCopyOptions.TableLock |
+                    SqlBulkCopyOptions.FireTriggers,
+                    null))
+                    {
+                        bulkCopy.DestinationTableName = "[experian].[dbo].[Members]";
+                        bulkCopy.BatchSize = data?.Count() ?? 0;
+                        
+                        bulkCopy.WriteToServer(dt);
+                    }
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
             }
         }
     }

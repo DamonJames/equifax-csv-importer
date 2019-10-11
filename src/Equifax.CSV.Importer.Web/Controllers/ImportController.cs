@@ -1,21 +1,27 @@
 ﻿using Equifax.CSV.Importer.Logic.Abstract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Equifax.CSV.Importer.Web.Controllers
 {
     public class ImportController : Controller
     {
         private readonly ICSVService _csvService;
+        private readonly IMemberService _memberService;
 
-        public ImportController(ICSVService csvService)
+        public ImportController(ICSVService csvService,
+            IMemberService memberService)
         {
             _csvService = csvService;
+            _memberService = memberService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var members = await _memberService.GetMembersAsync();
+
+            return View(members);
         }
 
         [HttpPost]
@@ -38,19 +44,19 @@ namespace Equifax.CSV.Importer.Web.Controllers
 
             if (!conversion.Success)
             {
-                ModelState.AddModelError("File", "There was a problem converting your file");
+                ModelState.AddModelError("File", conversion.Message);
                 return View("Index");
             }
 
-            var insert = _csvService.PersistMembers(conversion);
+            var insert = _memberService.PersistMembers(conversion.Members);
 
             if (!insert.Success)
             {
-                ModelState.AddModelError("File", "There was a problem persisting the members to the database");
+                ModelState.AddModelError("File", insert.Message);
                 return View("Index");
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }

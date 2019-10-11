@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Equifax.CSV.Importer.Models;
+@model IEnumerable<Member>
+@{
     ViewData["Title"] = "Upload";
 }
 
@@ -16,4 +18,27 @@
     <div class="form-group">
         <input type="submit" value="Upload" class="btn btn-default" />
     </div>
+}
+
+@if (Model.Any())
+{
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date Of Birth</th>
+            <th>Height</th>
+            <th>Balance</th>
+        </tr>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.Id</td>
+                <td>@member.Name</td>
+                <td>@member.DateOfBirth</td>
+                <td>@member.Height</td>
+                <td>@member.Balance</td>
+            </tr>
+        }
+    </table>
 }

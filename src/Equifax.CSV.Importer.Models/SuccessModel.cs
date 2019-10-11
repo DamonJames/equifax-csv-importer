@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Equifax.CSV.Importer.Models
 {
-    public class CSVSuccessModel : SuccessModel
+    public class SuccessModel
     {
-        public IEnumerable<Member> Members { get; set; }
+        public bool Success { get; set; }
+        public string Message { get; set; }
     }
 }
