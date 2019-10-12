@@ -25,7 +25,6 @@ namespace Equifax.CSV.Importer.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Submit(IFormFile upload)
         {
             if (upload == null || upload.Length < 1)
